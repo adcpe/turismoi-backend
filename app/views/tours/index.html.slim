@@ -1,2 +1,14 @@
-h1 Tours#index
-p Find me in app/views/tours/index.html.slim
+div
+  - unless @tours.nil?
+    - for tour in @tours[0]
+      - attrs = tour['attributes']
+      - activities = get_activity_string(tour['relationships']['activities']['data'])
+
+      section
+        img src="#{attrs['principal_photo']}" alt="#{attrs['name']}" /
+        h1 = attrs['name']
+        p Actividades
+        p = activities
+        p = attrs['avg_hours']
+        p = attrs['country_iso']
+        p = attrs['dolar_price']

@@ -24,7 +24,7 @@ class GetData < ApplicationService
     )
 
     # get attributes from each tour, push it to @tour_data
-    response['data'].each { |el| @tour_data << el['attributes'] }
+    response['data'].each { |el| @tour_data << el }
 
     # populate @activities as: :id = 'name'
     response['included'].each do |el|
