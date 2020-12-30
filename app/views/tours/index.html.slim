@@ -1,14 +1,24 @@
-div
-  - unless @tours.nil?
-    - for tour in @tours[0]
-      - attrs = tour['attributes']
-      - activities = get_activity_string(tour['relationships']['activities']['data'])
+- unless @tours.nil?
+  - for tour in @tours[0]
+    - attrs = tour['attributes']
+    - activities = get_activity_string(tour['relationships']['activities']['data'])
 
-      section
-        img src="#{attrs['principal_photo']}" alt="#{attrs['name']}" /
-        h1 = attrs['name']
-        p Actividades
-        p = activities
-        p = attrs['avg_hours']
-        p = attrs['country_iso']
-        p = attrs['dolar_price']
+    a href="https://turismoi.com/es/peru/tours/#{attrs['slug']}" target="_blank" rel="noopener noreferrer"
+      .grid.grid-cols-2.border.border-black.border-opacity-25.rounded-l-lg.shadow-sm
+        .overflow-hidden
+          img.overflow-hidden.bg-cover.w-full.h-full.object-cover src="#{attrs['principal_photo']}" alt="#{attrs['name']}" /
+        .flex.flex-col.justify-around.mx-8
+          .flex.flex-row.justify-between
+            div
+              h1.font-bold = attrs['name']
+            div
+              span = country_flag(attrs['country_iso'])
+          .flex.flex-col
+            p.font-bold.text-sm Actividades:
+            p.text-black.text-opacity-50.font-bold.text-sm = activities
+          .flex.flex-row.justify-between
+            div
+              p.text-black.text-opacity-50 = attrs['avg_hours'] <= 12 ? "#{attrs['avg_hours']} horas" : 'Full Day (1 día)'
+            div
+              p.text-black.font-bold Desde
+              p.text-black.font-bold = "$ #{attrs['dolar_price'].round}"
