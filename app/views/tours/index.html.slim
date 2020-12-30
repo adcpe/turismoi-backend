@@ -3,20 +3,20 @@
     - attrs = tour['attributes']
     - activities = get_activity_string(tour['relationships']['activities']['data'])
 
-    a href="https://turismoi.com/es/peru/tours/#{attrs['slug']}" target="_blank" rel="noopener noreferrer"
-      div class="grid xl:grid-cols-2 border border-black border-opacity-25 rounded-l-lg shadow-sm"
-        .overflow-hidden
-          img.overflow-hidden.bg-cover.w-full.h-full.object-cover src="#{attrs['principal_photo']}" alt="#{attrs['name']}" /
-        .flex.flex-col.justify-around.mx-8
-          .flex.flex-row.justify-between
+    a class="items-stretch" href="https://turismoi.com/es/peru/tours/#{attrs['slug']}" target="_blank" rel="noopener noreferrer"
+      div class="grid xl:grid-cols-2 border border-black border-opacity-25 xl:rounded-l-lg md:rounded-t-lg shadow-sm"
+        div
+          img class="bg-cover w-full h-full object-cover xl:rounded-l-lg md:rounded-t-lg" src="#{attrs['principal_photo']}" alt="#{attrs['name']}" /
+        div class="flex flex-col justify-around xl:mx-8 md:mx-2"
+          .flex.flex-row.justify-between.my-2
             div
               h1.font-bold = attrs['name']
             div
               span = country_flag(attrs['country_iso'])
-          .flex.flex-col
+          .flex.flex-col.my-2
             p.font-bold.text-sm Actividades:
             p.text-black.text-opacity-50.font-bold.text-sm = activities
-          .flex.flex-row.justify-between
+          .flex.flex-row.justify-between.my-2
             div
               p.text-black.text-opacity-50 = attrs['avg_hours'] <= 12 ? "#{attrs['avg_hours']} horas" : 'Full Day (1 día)'
             div
