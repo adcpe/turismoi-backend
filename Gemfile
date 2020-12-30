@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails', '~> 3.2.0'
 gem 'http', '~> 4.4.1'
+gem 'countries', '~> 3.0.1'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Active Storage variant
