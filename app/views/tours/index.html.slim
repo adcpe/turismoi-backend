@@ -4,7 +4,7 @@
     - activities = get_activity_string(tour['relationships']['activities']['data'])
 
     a href="https://turismoi.com/es/peru/tours/#{attrs['slug']}" target="_blank" rel="noopener noreferrer"
-      .grid.grid-cols-2.border.border-black.border-opacity-25.rounded-l-lg.shadow-sm
+      div class="grid xl:grid-cols-2 border border-black border-opacity-25 rounded-l-lg shadow-sm"
         .overflow-hidden
           img.overflow-hidden.bg-cover.w-full.h-full.object-cover src="#{attrs['principal_photo']}" alt="#{attrs['name']}" /
         .flex.flex-col.justify-around.mx-8
